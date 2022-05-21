@@ -2,7 +2,7 @@ import React from "react";
 
 const Banner = () => {
   return (
-    <div>
+    <div className="mt-16">
       <h1>This is banner</h1>
     </div>
   );

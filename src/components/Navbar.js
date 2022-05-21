@@ -7,7 +7,7 @@ const Navbar = ({ children }) => {
       <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col">
         {/* <!-- Navbar --> */}
-        <div class="w-full navbar bg-base-300">
+        <div class="w-full navbar bg-base-300 fixed top-0">
           <div class="flex-1 px-2 mx-2">Power</div>
           <div class="flex-none lg:hidden">
             <label for="my-drawer-3" class="btn btn-square btn-ghost">
@@ -49,7 +49,6 @@ const Navbar = ({ children }) => {
         </div>
         {/* <!-- Page content here --> */}
         {children}
-        Content
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay"></label>
