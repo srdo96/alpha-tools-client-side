@@ -11,6 +11,7 @@ const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
   let from = location.state?.from?.pathname || "/";
+
   // React form
   const {
     register,
