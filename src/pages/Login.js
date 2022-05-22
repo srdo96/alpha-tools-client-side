@@ -1,25 +1,49 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import auth from "../firebase.init";
 
 const Login = () => {
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
+
+  const location = useLocation();
+  const navigate = useNavigate();
+  let from = location.state?.from?.pathname || "/";
+  // React form
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
+
   const onSubmit = (data) => {
-    console.log(errors);
     console.log(data);
   };
+
+  if (googleUser) {
+    navigate(from, { replace: true });
+  }
   return (
     <div>
       <div class="hero min-h-screen bg-base-200">
         <div class="card w-full max-w-lg shadow-2xl bg-base-100">
           <div class="card-body">
             <h1 className="text-center text-2xl">Login</h1>
-            <button class="btn btn-success mt-2">Login with Google</button>
+
+            {/* google login */}
+
+            <button
+              onClick={() => signInWithGoogle()}
+              class="btn btn-success mt-2"
+            >
+              Login with Google
+            </button>
+
+            {/* googleError */}
+            <p class="text-red-500 text-center">{googleError?.message}</p>
+
             <div class="divider">OR</div>
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Email */}
