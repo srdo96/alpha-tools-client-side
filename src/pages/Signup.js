@@ -2,15 +2,13 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
-    console.log(errors);
     console.log(data);
   };
   return (
@@ -18,10 +16,34 @@ const Login = () => {
       <div class="hero min-h-screen bg-base-200">
         <div class="card w-full max-w-lg shadow-2xl bg-base-100">
           <div class="card-body">
-            <h1 className="text-center text-2xl">Login</h1>
-            <button class="btn btn-success mt-2">Login with Google</button>
+            <h1 className="text-center text-2xl">Sign Up</h1>
+            <button class="btn btn-success mt-2">Signup with Google</button>
             <div class="divider">OR</div>
             <form onSubmit={handleSubmit(onSubmit)}>
+              {/* Name */}
+              <label class="label">
+                <span class="label-text">Name</span>
+              </label>
+              <input
+                type="text"
+                className="input input-bordered w-full max-w-lg "
+                placeholder="Name"
+                {...register("name", {
+                  required: {
+                    value: true,
+                    message: "Name is Required",
+                  },
+                })}
+              />
+              {/* Name error handling */}
+              <label class="label">
+                {errors.name?.type === "required" && (
+                  <span class="label-text-alt text-red-600">
+                    {errors.name.message}
+                  </span>
+                )}
+              </label>
+
               {/* Email */}
               <label class="label">
                 <span class="label-text">Email</span>
@@ -91,14 +113,14 @@ const Login = () => {
                 <small className="underline">Forget password</small>
               </Link>
               <button type="submit" className="btn btn-primary btn-block mt-5">
-                Login
+                Sign up
               </button>
             </form>
             <div class="pt-5 pb-12 text-center">
               <p>
-                Don&#x27;t have an account?
-                <Link to="/signup" class="font-semibold underline ml-1">
-                  Create Account
+                Already have an account?
+                <Link to="/login" class="font-semibold underline ml-1">
+                  Login.
                 </Link>
               </p>
             </div>
@@ -109,4 +131,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
