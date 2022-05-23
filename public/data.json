@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Adjustable Wrench",
+    "img": "https://i.ibb.co/jRnJyZ3/wrench.webp",
+    "desc": "Adjustable wrenches are a must-have tool for any toolbox. These adjustable wrenches have an all steel I-beam construction for durability and comfort when applying torque to break those stubborn bolts free. These adjustable wrenches come in sizes ranging from 6-inch to 24-inch to get the job done in a variety of applications.",
+    "min_order": 500,
+    "available": 5000,
+    "price_unit": 80
+  },
+  {
+    "name": "Hammer",
+    "img": "https://i.ibb.co/jRnJyZ3/wrench.webp",
+    "desc": "SATA hammers feature industry-leading innovation to put powerful tools in the hands of doers. For everything from framing to driving nails to maintaining delicate machinery, SATA hammers enable professionals to do their best work. Our hammers come in large sledge hammer versions and smaller claw hammers, with a mallet for every job. Dont settle for less than the best, and show the world What youre capable of with the right tools.",
+    "min_order": 500,
+    "available": 4000,
+    "price_unit": 20
+  },
+  {
+    "name": "Cordless Electric Screwdriver",
+    "img": "https://i.ibb.co/zxZWvzC/electric-screwdriver.webp",
+    "desc": " 20V MAX* cordless drill/driver is up to the challenge of quick home repairs, DIY projects, and more. Use this compact, cordless drill/driver on wood, metal, and plastic. Its designed with a 24-position clutch that helps keep you from stripping and overdriving screws for enhanced control over every project. Maximum initial battery voltage (measured without a workload) is 20 volts. Nominal voltage is 18 volts.",
+    "min_order": 500,
+    "available": 5000,
+    "price_unit": 100
+  }
+]

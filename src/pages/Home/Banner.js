@@ -1,5 +1,5 @@
 import React from "react";
-import person from "../../assets/images/person1.png";
+import person from "../../assets/images/tools.jpeg";
 const Banner = () => {
   return (
     <div className="relative flex flex-col-reverse py-16 lg:pt-0 lg:flex-col lg:pb-0 mt-16">
@@ -23,8 +23,8 @@ const Banner = () => {
           <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
             Best Quality
           </p>
-          <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-            Professional Project
+          <h2 className="mb-5 font-sans text-3xl font-bold tracking-tight text-gray-900  sm:text-4xl sm:leading-none">
+            Professional Work
             <br className="hidden md:block" />
             <span className="inline-block text-deep-purple-accent-400">
               Needs Professional Tools
