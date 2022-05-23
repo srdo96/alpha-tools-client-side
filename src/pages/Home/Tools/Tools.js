@@ -1,13 +1,22 @@
 import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
+import Loading from "../../../components/Loading/Loading";
 import ToolsCard from "./ToolsCard";
 
 const Tools = () => {
-  const { data } = useQuery("allTools", () =>
+  const { data, isLoading } = useQuery("allTools", () =>
     axios.get("http://localhost:5000/tools")
   );
 
+  if (isLoading) {
+    return (
+      <div className="mt-16">
+        <Loading />
+      </div>
+    );
+  }
+  const { data: tools } = data;
   return (
     <div className=" mt-16">
       <h4 className="upper text-center text-lg text-red-700 font-semibold my-4">
