@@ -1,6 +1,6 @@
 import React from "react";
 import Banner from "./Banner";
-import Reviews from "./Reviews";
+import Reviews from "./Reviews/Reviews";
 import Summary from "./Summary";
 import Tools from "./Tools/Tools";
 
