@@ -1,13 +1,11 @@
-import axios from "axios";
 import React from "react";
 import { useQuery } from "react-query";
+import fetcher from "../../../api/axiosInstance";
 import Loading from "../../../components/Loading/Loading";
 import ToolsCard from "./ToolsCard";
 
 const Tools = () => {
-  const { data, isLoading } = useQuery("allTools", () =>
-    axios.get("http://localhost:5000/tools")
-  );
+  const { data, isLoading } = useQuery("allTools", () => fetcher.get("/tools"));
 
   if (isLoading) {
     return (
@@ -17,6 +15,7 @@ const Tools = () => {
     );
   }
   const { data: tools } = data;
+  console.log(data);
   return (
     <div className=" mt-16">
       <h4 className="upper text-center text-lg text-red-700 font-semibold my-4">
