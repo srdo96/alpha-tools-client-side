@@ -1,4 +1,5 @@
 import React from "react";
+import ToolsCard from "./ToolsCard";
 
 const Tools = () => {
   //   console.log(data);
@@ -10,6 +11,7 @@ const Tools = () => {
       <h2 className="text-4xl text-center font-medium">
         Do Your Work <span className="font-bold">Perfectly & Smoothly</span>
       </h2>
+      <ToolsCard />
     </div>
   );
 };
