@@ -3,7 +3,6 @@ import Dashboard from "../pages/Dashboard";
 import Home from "../pages/Home/Home";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
-import Purchase from "../pages/Purchase";
 import Signup from "../pages/Signup";
 
 export const publicRoutes = [
@@ -13,6 +12,5 @@ export const publicRoutes = [
   { path: "/blogs", name: "Blogs", Component: Blogs },
   { path: "/login", name: "Login", Component: Login },
   { path: "/signup", name: "Signup", Component: Signup },
-  { path: "/purchase/:id", name: "Purchase", Component: Purchase },
   { path: "*", name: "NotFound", Component: NotFound },
 ];
