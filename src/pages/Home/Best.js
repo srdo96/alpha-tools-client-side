@@ -53,7 +53,7 @@ const Best = () => {
           <div className="flex justify-center mt-16 ">
             <div>
               <div className="flex justify-center">
-                <img className="w-20 mb-2" src={expert} alt="" />
+                <img className="w-20 mb-2" src={tec} alt="" />
               </div>
               <h4 className="  text-white text-3xl">Advanced Technology</h4>
             </div>
