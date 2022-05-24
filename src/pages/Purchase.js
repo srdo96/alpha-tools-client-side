@@ -29,14 +29,30 @@ const Purchase = () => {
     );
   }
 
-  const { name, img, desc, available, min_order, price_unit } = data.data;
+  const { _id, name, img, desc, available, min_order, price_unit } = data.data;
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ phone, address, order }) => {
+    const userName = user.displayName;
+    const userEmail = user.email;
+    console.log(phone, address, order);
+    fetcher
+      .patch("/orders", {
+        toolId: _id,
+        toolsName: name,
+        price_unit,
+        order,
+        userName,
+        userEmail,
+        phone,
+        status: "unpaid",
+      })
+      .then((res) => {
+        console.log("Order place");
+      });
   };
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2  w-full px-4  lg:pt-16 md:px-8  mt-16 lg:min-h-screen">
+    <div className="grid grid-cols-1 lg:grid-cols-2  w-full px-4  lg:pt-16 md:px-8  mt-16 lg:max-h-screen">
       <div className="bg-white shadow  sm:rounded-lg ">
         <div className="px-4 py-5 sm:px-6">
           <h3 className="text-lg leading-6 font-medium text-gray-900">
@@ -133,7 +149,7 @@ const Purchase = () => {
                   </span>
                 )}
               </label>
-              {/* Name */}
+              {/* User Name */}
               <label class="label">
                 <span class="label-text">Name</span>
               </label>
@@ -141,7 +157,9 @@ const Purchase = () => {
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 value={user.displayName}
-                disabled
+                // disabled
+                disabled="disabled"
+                {...register("nam")}
               />
               {/* Email */}
               <label class="label">
@@ -151,7 +169,9 @@ const Purchase = () => {
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 value={user.email}
-                disabled
+                // disabled
+                disabled="disabled"
+                {...register("userEmail")}
               />
               {/* Phone */}
               <label class="label">
@@ -161,7 +181,21 @@ const Purchase = () => {
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Phone Number"
+                {...register("phone", {
+                  required: {
+                    value: true,
+                    message: "Phone number is Required",
+                  },
+                })}
               />
+              {/* Phone No. error handling */}
+              <label class="label">
+                {errors.phone?.type === "required" && (
+                  <span class="label-text-alt text-red-600">
+                    {errors.phone?.message}
+                  </span>
+                )}
+              </label>
               {/* Address */}
               <label class="label">
                 <span class="label-text">Address</span>
@@ -170,9 +204,23 @@ const Purchase = () => {
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Address"
-              />
+                {...register("address", {
+                  required: {
+                    value: true,
+                    message: "Address is Required",
+                  },
+                })}
+              />{" "}
+              {/* Address error handling */}
+              <label class="label">
+                {errors.address?.type === "required" && (
+                  <span class="label-text-alt text-red-600">
+                    {errors.address?.message}
+                  </span>
+                )}
+              </label>
               <button type="submit" className="btn btn-primary btn-block mt-5">
-                Buy
+                Purchase Now
               </button>
             </form>
           </div>
