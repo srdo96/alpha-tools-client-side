@@ -1,16 +1,38 @@
 import React from "react";
+import {
+  useAuthState,
+  useCreateUserWithEmailAndPassword,
+  useUpdateProfile,
+} from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
+import Loading from "../components/Loading/Loading";
+import auth from "../firebase.init";
 
 const Signup = () => {
+  const [user] = useAuthState(auth);
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+  const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useCreateUserWithEmailAndPassword(auth);
+
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
+
+  const onSubmit = async ({ name, email, password }) => {
+    console.log(email, password);
+    await createUserWithEmailAndPassword(email, password);
+    await updateProfile({ displayName: name });
+
+    // console.log(data);
   };
+  console.log(user);
+  if (user || emailUser) {
+    navigate("/");
+  }
   return (
     <div>
       <div class="hero min-h-screen bg-base-200">
@@ -108,12 +130,15 @@ const Signup = () => {
                   </span>
                 )}
               </label>
-              {/* reset password */}
-              <Link to="/reset">
-                <small className="underline">Forget password</small>
-              </Link>
+              {updateError && (
+                <p className="text-red-500 text-center">{updateError}</p>
+              )}
+              {emailError && (
+                <p className="text-red-500 text-center">{emailError}</p>
+              )}
               <button type="submit" className="btn btn-primary btn-block mt-5">
-                Sign up
+                {emailLoading ? <Loading /> : "Sign up"}
+                {updating && <Loading />}
               </button>
             </form>
             <div class="pt-5 pb-12 text-center">
