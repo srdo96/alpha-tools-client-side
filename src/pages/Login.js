@@ -1,12 +1,21 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useAuthState,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
+import Loading from "../components/Loading/Loading";
 
 const Login = () => {
+  const [user] = useAuthState(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
+
+  const [signInWithEmailAndPassword, emailUser, emailLoading, emailError] =
+    useSignInWithEmailAndPassword(auth);
 
   const location = useLocation();
   const navigate = useNavigate();
@@ -19,11 +28,20 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = ({ email, password }) => {
+    signInWithEmailAndPassword(email, password);
+    // console.log(data);
   };
 
-  if (googleUser) {
+  // if (googleLoading) {
+  //   return (
+  //     <div className="h-screen flex justify-center ">
+  //       <Loading />;
+  //     </div>
+  //   );
+  // }
+
+  if (user) {
     navigate(from, { replace: true });
   }
   return (
@@ -37,9 +55,9 @@ const Login = () => {
 
             <button
               onClick={() => signInWithGoogle()}
-              class="btn btn-success mt-2"
+              class="btn btn-outline mt-2"
             >
-              Login with Google
+              {googleLoading ? <Loading /> : "Login with Google"}
             </button>
 
             {/* googleError */}
@@ -116,7 +134,7 @@ const Login = () => {
                 <small className="underline">Forget password</small>
               </Link>
               <button type="submit" className="btn btn-primary btn-block mt-5">
-                Login
+                {emailLoading ? <Loading /> : "Login"}
               </button>
             </form>
             <div class="pt-5 pb-12 text-center">
