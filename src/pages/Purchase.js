@@ -1,13 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
 import { useParams } from "react-router-dom";
 import fetcher from "../api/axiosInstance";
 import Loading from "../components/Loading/Loading";
+import auth from "../firebase.init";
 
 const Purchase = () => {
+  const [user, loading, error] = useAuthState(auth);
   const { id } = useParams();
-  const { data, isLoading } = useQuery("Tool", () =>
+
+  const { data, isLoading } = useQuery(["Tool", id], () =>
     fetcher.get(`/tools/${id}`)
   );
 
@@ -17,7 +21,7 @@ const Purchase = () => {
     formState: { errors },
   } = useForm();
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return (
       <div className="h-screen flex justify-center ">
         <Loading />;
@@ -26,6 +30,7 @@ const Purchase = () => {
   }
 
   const { name, img, desc, available, min_order, price_unit } = data.data;
+
   const onSubmit = (data) => {
     console.log(data);
   };
@@ -87,6 +92,47 @@ const Purchase = () => {
             <h1 className="text-center text-2xl">Purchase From</h1>
 
             <form onSubmit={handleSubmit(onSubmit)}>
+              {/* Order Quantity */}
+              <label class="label">
+                <span class="label-text">Order Quantity</span>
+              </label>
+              <input
+                type="number"
+                className="input input-bordered w-full max-w-lg "
+                defaultValue={min_order}
+                {...register("order", {
+                  required: {
+                    value: true,
+                    message: "Order Quantity is Required",
+                  },
+                  min: {
+                    value: min_order,
+                    message: `Place order ${min_order} to ${available}`,
+                  },
+                  max: {
+                    value: available,
+                    message: `Place order ${min_order} to ${available}`,
+                  },
+                })}
+              />
+              {/* Order error handling */}
+              <label class="label">
+                {errors.order?.type === "required" && (
+                  <span class="label-text-alt text-red-600">
+                    {errors.order.message}
+                  </span>
+                )}
+                {errors.order?.type === "min" && (
+                  <span class="label-text-alt text-red-600">
+                    {errors.order.message}
+                  </span>
+                )}
+                {errors.order?.type === "max" && (
+                  <span class="label-text-alt text-red-600">
+                    {errors.order.message}
+                  </span>
+                )}
+              </label>
               {/* Name */}
               <label class="label">
                 <span class="label-text">Name</span>
@@ -94,9 +140,9 @@ const Purchase = () => {
               <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
-                placeholder="Name"
+                value={user.displayName}
+                disabled
               />
-
               {/* Email */}
               <label class="label">
                 <span class="label-text">Email</span>
@@ -104,7 +150,8 @@ const Purchase = () => {
               <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
-                placeholder="Email"
+                value={user.email}
+                disabled
               />
               {/* Phone */}
               <label class="label">
@@ -124,7 +171,6 @@ const Purchase = () => {
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Address"
               />
-
               <button type="submit" className="btn btn-primary btn-block mt-5">
                 Buy
               </button>
