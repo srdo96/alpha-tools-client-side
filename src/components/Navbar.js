@@ -1,11 +1,17 @@
 import { signOut } from "firebase/auth";
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink } from "react-router-dom";
 import auth from "../firebase.init";
 
 const Navbar = ({ children }) => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
+  const [checkEmailVerified, setCheckEmailVerified] = useState(true);
+  // if (loading) return <p>loading</p>;
+  // if (user) {
+  //   console.log(user.emailVerified);
+  //   setCheckEmailVerified(user.emailVerified);
+  // }
 
   return (
     <div class="drawer drawer-end">
@@ -49,6 +55,11 @@ const Navbar = ({ children }) => {
                   Blogs
                 </NavLink>
               </li>
+              {user && (
+                <li>
+                  <p>{user?.displayName}</p>
+                </li>
+              )}
               <li>
                 {user ? (
                   <button
@@ -67,6 +78,7 @@ const Navbar = ({ children }) => {
           </div>
         </div>
         {/* <!-- Page content here --> */}
+
         {children}
       </div>
       <div class="drawer-side">

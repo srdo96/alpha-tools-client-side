@@ -6,7 +6,7 @@ import auth from "../firebase.init";
 const ProtectedRoute = () => {
   const [user] = useAuthState(auth);
   let location = useLocation();
-
+  console.log(user);
   if (!user) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }

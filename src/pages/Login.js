@@ -41,7 +41,7 @@ const Login = () => {
   //   );
   // }
 
-  if (user) {
+  if (user || googleUser || emailUser) {
     navigate(from, { replace: true });
   }
   return (
@@ -133,6 +133,9 @@ const Login = () => {
               <Link to="/reset">
                 <small className="underline">Forget password</small>
               </Link>
+              {emailError && (
+                <p className="text-red-500 text-center">{emailError.message}</p>
+              )}
               <button type="submit" className="btn btn-primary btn-block mt-5">
                 {emailLoading ? <Loading /> : "Login"}
               </button>
