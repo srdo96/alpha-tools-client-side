@@ -1,30 +1,23 @@
 import React from "react";
-import person from "../../../assets/images/worker.jpg";
 import "./style.css";
 import { Autoplay, Pagination, Navigation } from "swiper";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Swiper, SwiperSlide } from "swiper/react";
 import Review from "./Review";
+import { useQuery } from "react-query";
+import fetcher from "../../../api/axiosInstance";
+import Loading from "../../../components/Loading/Loading";
 
-const caro = [
-  {
-    img: "https://i.ibb.co/6yN40Vp/user-8.jpg",
-    desc: "Alpha Tools manufacture good quality products. Their tools are very strong, reliable. ",
-    name: "Abdullah",
-  },
-  {
-    img: "https://i.ibb.co/3hZF09X/user-4.jpg ",
-    desc: "I realized after I sent in my order that I had ordered a larger quantity than I needed. I emailed and received a quick response, adjustment to my order and a refund. Product was shipped out  in a timely manner. Alpha Tools is great!",
-    name: "Ibn Fulan",
-  },
-  {
-    img: "https://i.ibb.co/t4WFRj6/user-2.jpg",
-    desc: "For my project I use their product. My workers are happy and satisfy for Alpha tools. Their products are very strong.",
-    name: "Hasan",
-  },
-];
 const Reviews = () => {
+  const { data, isLoading } = useQuery("reviews", () => fetcher("reviews"));
+  if (isLoading) {
+    return (
+      <div className="h-screen flex justify-center ">
+        <Loading />;
+      </div>
+    );
+  }
   return (
     <div>
       <h4 className="upper text-center text-lg text-red-700 font-semibold my-4">
@@ -48,9 +41,9 @@ const Reviews = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="swiper"
       >
-        {caro.map((c) => (
+        {data?.data?.map((review) => (
           <SwiperSlide>
-            <Review c={c} />
+            <Review key={review._id} review={review} />
           </SwiperSlide>
         ))}
       </Swiper>

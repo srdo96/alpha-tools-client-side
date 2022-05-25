@@ -1,19 +1,19 @@
 import React from "react";
-import person from "../../../assets/images/worker.jpg";
-const Review = ({ c }) => {
-  const { img, desc, name } = c;
+
+const Review = ({ review }) => {
+  const { name, desc } = review;
   return (
     <div class="  w-full mx-auto p-8">
       <div class="flex items-center flex-col justify-center">
         <a href="#" class="block relative">
           <img
             alt="profil"
-            src={img}
+            src="https://i.ibb.co/6yN40Vp/user-8.jpg"
             class="mx-auto object-cover rounded-full h-40 w-40 "
           />
         </a>
-        <div class="w-full md:w-2/3 mt-2">
-          <p class="text-gray-600  w-full md:w-2/3 m-auto text-left text-lg md:text-2xl">
+        <div class="w-full md:w-2/3 mt-2 ">
+          <p class="text-gray-600  w-full md:w-2/3 m-auto text-lg md:text-2xl text-center">
             <span class="font-bold text-indigo-500">“</span>
             {desc}
             <span class="font-bold text-indigo-500"> ”</span>

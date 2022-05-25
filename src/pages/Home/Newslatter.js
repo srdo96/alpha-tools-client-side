@@ -13,11 +13,11 @@ const Newslatter = () => {
             Sign up for our newsletter and we&#x27;ll email you every time we
             release a new batch of components.
           </p>
-          <form>
+          <div>
             <div class="sm:flex jusitfy-start mt-6">
-              <form class="flex flex-col md:flex-row w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center">
+              <div class="flex flex-col md:flex-row w-3/4 md:w-full max-w-sm md:space-x-3 space-y-3 md:space-y-0 justify-center">
                 <div class=" relative ">
-                  <textarea
+                  <input
                     type="text"
                     id='"form-subscribe-Subscribe'
                     class=" rounded-lg border-transparent flex-1 appearance-none border border-gray-300 w-full py-2 px-4 bg-white text-gray-700 placeholder-gray-400 shadow-sm text-base focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent"
@@ -30,9 +30,9 @@ const Newslatter = () => {
                 >
                   Subscribe
                 </button>
-              </form>
+              </div>
             </div>
-          </form>
+          </div>
         </div>
         <div class="hidden lg:block  inset-y-0 lg:left-2/3 xl:left-1/2 ">
           {/* <img src={plant} alt="" /> */}

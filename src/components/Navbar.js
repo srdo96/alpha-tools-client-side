@@ -108,7 +108,7 @@ const Navbar = ({ children }) => {
         {/* <!-- Page content here --> */}
 
         {children}
-        <Footer />
+        {/* <Footer /> */}
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay"></label>

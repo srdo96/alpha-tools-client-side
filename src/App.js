@@ -13,29 +13,32 @@ import { publicRoutes } from "./routes/publicRoutes";
 
 function App() {
   return (
-    <Navbar>
-      <Toaster />
-      <Routes>
-        {/* Public Routes */}
-        {publicRoutes.map(({ path, Component }, index) => (
-          <Route key={index} path={path} element={<Component />} />
-        ))}
-
-        {/* Protected Routes */}
-        <Route element={<ProtectedRoute />}>
-          {protectedRoutes.map(({ path, Component }, index) => (
+    <>
+      <Navbar>
+        <Toaster />
+        <Routes>
+          {/* Public Routes */}
+          {publicRoutes.map(({ path, Component }, index) => (
             <Route key={index} path={path} element={<Component />} />
           ))}
-          {/* Dashboard routes */}
-          <Route path="/dashboard" element={<Dashboard />}>
-            <Route path="profile" element={<MyProfile />} />
-            <Route path="my-orders" element={<MyOrders />} />
-            <Route path="add-review" element={<AddReview />} />
-            <Route path="payment/:id" element={<Payment />} />
+
+          {/* Protected Routes */}
+          <Route element={<ProtectedRoute />}>
+            {protectedRoutes.map(({ path, Component }, index) => (
+              <Route key={index} path={path} element={<Component />} />
+            ))}
+            {/* Dashboard routes */}
+            <Route path="/dashboard" element={<Dashboard />}>
+              <Route path="profile" element={<MyProfile />} />
+              <Route path="my-orders" element={<MyOrders />} />
+              <Route path="add-review" element={<AddReview />} />
+              <Route path="payment/:id" element={<Payment />} />
+            </Route>
           </Route>
-        </Route>
-      </Routes>
-    </Navbar>
+        </Routes>
+      </Navbar>
+      <Footer />
+    </>
   );
 }
 
