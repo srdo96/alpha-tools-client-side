@@ -1,7 +1,12 @@
 import React from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
+import fetcher from "../../api/axiosInstance";
+import auth from "../../firebase.init";
 
 const AddReview = () => {
+  const [user, loading] = useAuthState(auth);
   const {
     register,
     handleSubmit,
@@ -9,7 +14,16 @@ const AddReview = () => {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data);
+    const review = {
+      name: user?.displayName,
+      email: user?.email,
+      rating: data.rating,
+      desc: data.desc,
+    };
+
+    fetcher.patch("add-reviews", review).then((res) => {
+      toast.success("Thanks for review!");
+    });
   };
 
   return (
