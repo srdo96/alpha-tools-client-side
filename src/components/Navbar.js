@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { NavLink, useLocation } from "react-router-dom";
 import auth from "../firebase.init";
+import Footer from "./Footer";
 
 const Navbar = ({ children }) => {
   const [user, loading] = useAuthState(auth);
@@ -17,8 +18,8 @@ const Navbar = ({ children }) => {
 
   return (
     <div class="drawer drawer-end">
-      <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col">
+      <textarea id="my-drawer-3" type="checkbox" class="drawer-toggle " />
+      <div class="drawer-content flex flex-col ">
         {/* <!-- Navbar --> */}
         <div class="w-full navbar bg-blue-400 z-20 fixed top-0">
           {/* dashboard  nav icon */}
@@ -107,6 +108,7 @@ const Navbar = ({ children }) => {
         {/* <!-- Page content here --> */}
 
         {children}
+        <Footer />
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay"></label>

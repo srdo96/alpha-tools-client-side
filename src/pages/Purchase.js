@@ -114,7 +114,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Order Quantity</span>
               </label>
-              <input
+              <textarea
                 type="number"
                 className="input input-bordered w-full max-w-lg "
                 defaultValue={min_order}
@@ -155,7 +155,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Name</span>
               </label>
-              <input
+              <textarea
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 value={user.displayName}
@@ -167,7 +167,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Email</span>
               </label>
-              <input
+              <textarea
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 value={user.email}
@@ -179,7 +179,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Phone No.</span>
               </label>
-              <input
+              <textarea
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Phone Number"
@@ -202,7 +202,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Address</span>
               </label>
-              <input
+              <textarea
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Address"

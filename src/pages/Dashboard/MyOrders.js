@@ -23,8 +23,8 @@ const MyOrders = () => {
   }
 
   return (
-    <div class="ml-2 ">
-      <table class="table w-full">
+    <div class="ml-2">
+      <table class="table w-full h-screen">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -35,12 +35,21 @@ const MyOrders = () => {
             <th>Total Price</th>
             <th>Status</th>
             <th></th>
+            <th>Transaction Id</th>
           </tr>
         </thead>
         <tbody>
           {data?.data.map(
             (
-              { _id, toolsName, price_unit, order, totalPrice, status },
+              {
+                _id,
+                toolsName,
+                price_unit,
+                order,
+                totalPrice,
+                status,
+                transactionId,
+              },
               index
             ) => (
               <tr>
@@ -85,6 +94,7 @@ const MyOrders = () => {
                 ) : (
                   <td />
                 )}
+                {transactionId ? <td>{transactionId}</td> : <td></td>}
               </tr>
             )
           )}

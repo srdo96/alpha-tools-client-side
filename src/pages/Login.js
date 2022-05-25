@@ -10,7 +10,7 @@ import auth from "../firebase.init";
 import Loading from "../components/Loading/Loading";
 
 const Login = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [signInWithGoogle, googleUser, googleLoading, googleError] =
     useSignInWithGoogle(auth);
 
@@ -33,13 +33,13 @@ const Login = () => {
     // console.log(data);
   };
 
-  // if (googleLoading) {
-  //   return (
-  //     <div className="h-screen flex justify-center ">
-  //       <Loading />;
-  //     </div>
-  //   );
-  // }
+  if (loading) {
+    return (
+      <div className="h-screen flex justify-center ">
+        <Loading />;
+      </div>
+    );
+  }
 
   if (user || googleUser || emailUser) {
     navigate(from, { replace: true });
@@ -69,7 +69,7 @@ const Login = () => {
               <label class="label">
                 <span class="label-text">Email</span>
               </label>
-              <input
+              <textarea
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Email"
@@ -101,7 +101,7 @@ const Login = () => {
               <label class="label">
                 <span class="label-text">Password</span>
               </label>
-              <input
+              <textarea
                 type="password"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Password"
