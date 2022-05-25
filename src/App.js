@@ -7,6 +7,7 @@ import AddReview from "./pages/Dashboard/AddReview";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MyOrders from "./pages/Dashboard/MyOrders";
 import MyProfile from "./pages/Dashboard/MyProfile";
+import Payment from "./pages/Dashboard/Payment";
 import { protectedRoutes } from "./routes/protectedRoutes";
 import { publicRoutes } from "./routes/publicRoutes";
 
@@ -30,6 +31,7 @@ function App() {
             <Route path="profile" element={<MyProfile />} />
             <Route path="my-orders" element={<MyOrders />} />
             <Route path="add-review" element={<AddReview />} />
+            <Route path="payment/:id" element={<Payment />} />
           </Route>
         </Route>
       </Routes>

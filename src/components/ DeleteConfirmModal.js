@@ -34,7 +34,7 @@ const DeleteConfirmModal = ({ refetch, id }) => {
                 Remove Order
               </p>
               <p className="text-gray-600 dark:text-gray-400 text-xs py-2 px-6">
-                Are you sure you want to delete this order ?
+                Are you sure you want to delete <br /> this order ?
               </p>
               <div className="flex items-center justify-between gap-4 w-full mt-8">
                 <label
@@ -49,7 +49,7 @@ const DeleteConfirmModal = ({ refetch, id }) => {
                 <label
                   htmlFor="delete-confirm-modal"
                   type="button"
-                  className="py-2 px-4  bg-white hover:bg-gray-100 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-indigo-500 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
+                  className="py-2 px-4  bg-white hover:bg-gray-100 focus:ring-indigo-500 focus:ring-offset-indigo-200 text-indigo-500  w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                 >
                   Cancel
                 </label>

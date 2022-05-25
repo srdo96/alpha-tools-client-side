@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import toast from "react-hot-toast";
 import { useQuery } from "react-query";
+import { Link } from "react-router-dom";
 import fetcher from "../../api/axiosInstance";
 import DeleteConfirmModal from "../../components/ DeleteConfirmModal";
 import Loading from "../../components/Loading/Loading";
@@ -32,19 +32,35 @@ const MyOrders = () => {
             <th>Name</th>
             <th>Unit Price</th>
             <th>Order Quantity</th>
+            <th>Total Price</th>
             <th>Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
           {data?.data.map(
-            ({ _id, toolsName, price_unit, order, status }, index) => (
+            (
+              { _id, toolsName, price_unit, order, totalPrice, status },
+              index
+            ) => (
               <tr>
                 <th>{index + 1}</th>
                 <td>{toolsName}</td>
                 <td>{price_unit}</td>
                 <td>{order}</td>
-                <td>{status}</td>
+                <td>{totalPrice}</td>
+                {status.includes("unpaid") ? (
+                  <td>
+                    <Link
+                      to={`/dashboard/payment/${_id}`}
+                      className="px-3 pb-2 border-2 rounded-xl  font-medium bg-emerald-500"
+                    >
+                      pay
+                    </Link>
+                  </td>
+                ) : (
+                  <td>paid</td>
+                )}
                 {status.includes("unpaid") ? (
                   <td>
                     <label htmlFor="delete-confirm-modal">

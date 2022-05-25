@@ -34,6 +34,7 @@ const Purchase = () => {
   const onSubmit = ({ phone, address, order }) => {
     const userName = user.displayName;
     const userEmail = user.email;
+    const totalPrice = price_unit * order;
     console.log(phone, address, order);
     fetcher
       .patch("/orders", {
@@ -41,6 +42,7 @@ const Purchase = () => {
         toolsName: name,
         price_unit,
         order,
+        totalPrice,
         userName,
         userEmail,
         phone,
