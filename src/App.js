@@ -37,7 +37,7 @@ function App() {
           </Route>
         </Routes>
       </Navbar>
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 }

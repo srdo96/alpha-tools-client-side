@@ -83,6 +83,11 @@ const Navbar = ({ children }) => {
                   Blogs
                 </NavLink>
               </li>
+              <li>
+                <NavLink to="/portfolio" className="rounded-lg">
+                  My Portfolio
+                </NavLink>
+              </li>
               {user && (
                 <li>
                   <p>{user.displayName}</p>
@@ -108,7 +113,7 @@ const Navbar = ({ children }) => {
         {/* <!-- Page content here --> */}
 
         {children}
-        {/* <Footer /> */}
+        <Footer />
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay"></label>
@@ -129,6 +134,11 @@ const Navbar = ({ children }) => {
           <li>
             <NavLink to="/blogs" className="rounded-lg">
               Blogs
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/portfolio" className="rounded-lg">
+              My Portfolio
             </NavLink>
           </li>
           {user && (
