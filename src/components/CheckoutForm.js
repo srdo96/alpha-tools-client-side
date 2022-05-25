@@ -7,9 +7,11 @@ const CheckoutForm = ({ data }) => {
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const [success, setSuccess] = useState("");
+  const [transactionId, setTransactionId] = useState("");
   const [clientSecret, setClientSecret] = useState("");
+  const [processing, setProcessing] = useState(false);
 
-  const { totalPrice: price, userName, userEmail } = data;
+  const { _id, totalPrice: price, userName, userEmail } = data;
   //   console.log(data);
   useEffect(() => {
     fetcher.post("/create-payment-intent", { price }).then((res) => {
@@ -40,6 +42,7 @@ const CheckoutForm = ({ data }) => {
 
     setCardError(error?.message || "");
     setSuccess("");
+    setProcessing(true);
 
     //  confirmCardPayment
     const { paymentIntent, error: intentError } =
@@ -55,44 +58,65 @@ const CheckoutForm = ({ data }) => {
 
     if (intentError) {
       setCardError(intentError?.message);
+      setProcessing(false);
     } else {
       setCardError("");
       console.log("payInt", paymentIntent);
+      setTransactionId(paymentIntent.id);
       setSuccess("Payment Successful");
+
+      //   store payment info into database
+      const payment = {
+        orderID: _id,
+        transactionId: paymentIntent.id,
+      };
+      fetcher.patch(`/order/${_id}`, { payment }).then((res) => {
+        setProcessing(false);
+        console.log(data);
+      });
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <CardElement
-        options={{
-          style: {
-            base: {
-              fontSize: "16px",
-              color: "#424770",
-              "::placeholder": {
-                color: "#aab7c4",
+    <>
+      <form onSubmit={handleSubmit}>
+        <CardElement
+          options={{
+            style: {
+              base: {
+                fontSize: "16px",
+                color: "#424770",
+                "::placeholder": {
+                  color: "#aab7c4",
+                },
+              },
+              invalid: {
+                color: "#9e2146",
               },
             },
-            invalid: {
-              color: "#9e2146",
-            },
-          },
-        }}
-      />
+          }}
+        />
+
+        <button
+          className="btn btn-success btn-sm mt-5"
+          type="submit"
+          disabled={!stripe || !clientSecret}
+        >
+          Pay
+        </button>
+      </form>
       {cardError && (
         <p className="text-red-500 mt-5 font-semibold">{cardError}</p>
       )}
       {success && (
-        <p className="text-green-500 mt-5 font-semibold">{success}</p>
+        <div>
+          <p className="text-green-500 mt-5 font-semibold">{success}</p>
+          <p>
+            <span>Your transaction id: </span>
+            <span className="text-blue-600 font-semibold">{transactionId}</span>
+          </p>
+        </div>
       )}
-      <button
-        className="btn btn-success btn-sm mt-5"
-        type="submit"
-        disabled={!stripe || !clientSecret}
-      >
-        Pay
-      </button>
-    </form>
+    </>
   );
 };
 
