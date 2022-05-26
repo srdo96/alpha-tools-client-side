@@ -17,18 +17,16 @@ const DashboardSidebar = ({ children }) => {
       </div>
     );
   }
-  // console.log("dashAdmin", admin);
   return (
-    <div class="drawer drawer-mobile mt-16 ">
+    <div class="drawer  drawer-mobile mt-16 ">
       <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col  bg-accent h-screen">
+      <div class="drawer-content flex flex-col  bg-accent">
         {/* <!-- Page content here --> */}
         {children}
-        {/* <Outlet /> */}
       </div>
       <div class="drawer-side">
-        <label for="my-drawer-2" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content h-screen">
+        <label for="my-drawer-2" class="drawer-overlay "></label>
+        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content ">
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink to="/dashboard/profile">My Profile</NavLink>
@@ -47,9 +45,14 @@ const DashboardSidebar = ({ children }) => {
           )}
 
           {admin && (
-            <li>
-              <NavLink to="/dashboard/add-product">Add Product</NavLink>
-            </li>
+            <>
+              <li>
+                <NavLink to="/dashboard/add-product">Add Product</NavLink>
+              </li>
+              <li>
+                <NavLink to="/dashboard/users">Users</NavLink>
+              </li>
+            </>
           )}
         </ul>
       </div>

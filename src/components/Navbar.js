@@ -113,7 +113,7 @@ const Navbar = ({ children }) => {
         {/* <!-- Page content here --> */}
 
         {children}
-        <Footer />
+        {pathname.includes("dashboard") || <Footer />}
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay"></label>
@@ -126,7 +126,7 @@ const Navbar = ({ children }) => {
           </li>
           {user && (
             <li>
-              <NavLink to="/dashboard" className="rounded-lg">
+              <NavLink to="/dashboard/profile" className="rounded-lg">
                 Dashboard
               </NavLink>
             </li>

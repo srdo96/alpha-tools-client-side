@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar";
 import AddProduct from "./pages/Dashboard/AddProduct";
 import AddReview from "./pages/Dashboard/AddReview";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import MakeAdmin from "./pages/Dashboard/MakeAdmin";
 import MyOrders from "./pages/Dashboard/MyOrders";
 import MyProfile from "./pages/Dashboard/MyProfile";
 import Payment from "./pages/Dashboard/Payment";
@@ -54,6 +55,14 @@ function App() {
             element={
               <AdminRoute>
                 <AddProduct />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="users"
+            element={
+              <AdminRoute>
+                <MakeAdmin />
               </AdminRoute>
             }
           />

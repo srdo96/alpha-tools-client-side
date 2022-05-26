@@ -31,6 +31,7 @@ const MyProfile = () => {
   const handleUpdate = (name) => {
     console.log("e", name);
     const data = {
+      name: displayName,
       [name]: update,
     };
     fetcher.put(`user/${email}`, data).then((res) => {
@@ -38,7 +39,7 @@ const MyProfile = () => {
       refetch();
     });
   };
-  
+
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg h-screen">
       <div className="flex justify-between">

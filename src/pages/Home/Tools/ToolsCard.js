@@ -7,7 +7,7 @@ const ToolsCard = ({ tool }) => {
   return (
     <div class="card card-compact w-96 bg-white shadow-xl ">
       <figure>
-        <img src={img} alt="Shoes" />
+        <img src={img} alt={name} />
       </figure>
       <div class="card-body">
         <h2 class="card-title">{name}</h2>
@@ -16,7 +16,7 @@ const ToolsCard = ({ tool }) => {
           <span className="font-bold">Minimum Order:</span> {min_order}
         </p>
         <p>
-          <span className="font-bold">Abailable:</span> {available}
+          <span className="font-bold">Available:</span> {available}
         </p>
         <p>
           <span className="font-bold">Price/unit:</span> ${price_unit}

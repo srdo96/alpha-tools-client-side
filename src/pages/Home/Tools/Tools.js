@@ -24,7 +24,7 @@ const Tools = () => {
       <h2 className="text-4xl text-center font-medium">
         Do Your Work <span className="font-bold">Perfectly & Smoothly</span>
       </h2>
-      <div className="grid grid-cols-3 justify-items-center mt-16 ">
+      <div className="grid sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-5 justify-items-center mt-16 ">
         {tools.map((tool) => (
           <ToolsCard key={tool._id} tool={tool} />
         ))}
