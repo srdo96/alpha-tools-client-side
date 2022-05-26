@@ -32,7 +32,7 @@ const AddProduct = () => {
   };
 
   return (
-    <div className=" mx-auto w-96 ">
+    <div className=" mx-auto w-96 mb-16 ">
       <div class="card-body  bg-white rounded-lg shadow-lg">
         <h1 className="text-center text-2xl">Add New Product</h1>
         <form className="mx-auto w-full" onSubmit={handleSubmit(onSubmit)}>

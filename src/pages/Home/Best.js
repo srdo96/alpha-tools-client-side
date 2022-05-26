@@ -46,24 +46,20 @@ const Best = () => {
           </div>
         </div>
         {/* Advanced Technology */}
-        <div
-          className="border-b  md:border-r   lg:border-r-0 h-72 "
-          style={{ background: "#273272" }}
-        >
+        <div className="border-b  md:border-r bg-[#ff5e14] lg:bg-[#273272]  lg:border-r-0 h-72 ">
           <div className="flex justify-center mt-16 ">
             <div>
               <div className="flex justify-center">
                 <img className="w-20 mb-2" src={tec} alt="" />
               </div>
-              <h4 className="  text-white text-3xl">Advanced Technology</h4>
+              <h4 className="  text-white text-3xl text-center ">
+                Advanced Technology
+              </h4>
             </div>
           </div>
         </div>
         {/* Customer Support */}
-        <div
-          className=" border-b  md:border-r  lg:border-r-0 h-72 "
-          style={{ background: "#ff5e14" }}
-        >
+        <div className=" border-b  md:border-r bg-[#273272] lg:bg-[#ff5e14] lg:border-r-0 h-72 ">
           <div className="flex justify-center mt-16 ">
             <div>
               <div className="flex justify-center">
