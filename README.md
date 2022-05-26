@@ -1,9 +1,12 @@
-# Getting Started with Create React App
+# Alpha Tools
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Site](https://alpha-tools-c9d53.web.app/).
 
-## features and functionality
+## Features and Functionality
 
-In the project directory, you can run:
-
-### `yarn start`
+- Hear you can parchese tools with card.
+- You can manage users orders.
+- Here you can see my portfolio.
+- Add Dashboard wher user can add review and also can see their orders
+- use MongoDB. Store all data and do CRUD operation in MongoDB NoSql database.
+- Social login. Alongside email/password login.
