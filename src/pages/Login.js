@@ -69,7 +69,7 @@ const Login = () => {
               <label class="label">
                 <span class="label-text">Email</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Email"
@@ -101,7 +101,7 @@ const Login = () => {
               <label class="label">
                 <span class="label-text">Password</span>
               </label>
-              <textarea
+              <input
                 type="password"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Password"

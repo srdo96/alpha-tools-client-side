@@ -24,7 +24,7 @@ const MyOrders = () => {
 
   return (
     <div class="ml-2">
-      <table class="table w-full h-screen">
+      <table class="table w-full max-h-screen">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -62,13 +62,15 @@ const MyOrders = () => {
                   <td>
                     <Link
                       to={`/dashboard/payment/${_id}`}
-                      className="px-3 pb-2 border-2 rounded-xl  font-medium bg-emerald-500"
+                      className="badge badge-warning hover:bg-amber-600"
                     >
-                      pay
+                      pay now
                     </Link>
                   </td>
                 ) : (
-                  <td>paid</td>
+                  <td>
+                    <div class="badge badge-success">paid</div>
+                  </td>
                 )}
                 {status.includes("unpaid") ? (
                   <td>

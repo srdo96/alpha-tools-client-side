@@ -2,7 +2,7 @@ import React from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { useQuery } from "react-query";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import fetcher from "../api/axiosInstance";
 import Loading from "../components/Loading/Loading";
 import auth from "../firebase.init";
@@ -14,6 +14,8 @@ const Purchase = () => {
   const { data, isLoading } = useQuery(["Tool", id], () =>
     fetcher.get(`/tools/${id}`)
   );
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -30,25 +32,29 @@ const Purchase = () => {
   }
 
   const { _id, name, img, desc, available, min_order, price_unit } = data.data;
-
+  console.log("img", img);
   const onSubmit = ({ phone, address, order }) => {
     const userName = user.displayName;
     const userEmail = user.email;
     const totalPrice = price_unit * order;
-    console.log(phone, address, order);
+    // console.log(phone, address, order);
     fetcher
       .patch("/orders", {
         toolId: _id,
         toolsName: name,
+        img,
         price_unit,
         order,
         totalPrice,
         userName,
         userEmail,
         phone,
+        address,
         status: "unpaid",
       })
       .then((res) => {
+        const id = res?.data?.insertedId;
+        navigate(`/dashboard/payment/${id}`);
         console.log("Order place");
       });
   };
@@ -114,7 +120,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Order Quantity</span>
               </label>
-              <textarea
+              <input
                 type="number"
                 className="input input-bordered w-full max-w-lg "
                 defaultValue={min_order}
@@ -155,7 +161,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Name</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 value={user.displayName}
@@ -167,7 +173,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Email</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 value={user.email}
@@ -179,7 +185,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Phone No.</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Phone Number"
@@ -202,7 +208,7 @@ const Purchase = () => {
               <label class="label">
                 <span class="label-text">Address</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Address"

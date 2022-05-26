@@ -11,7 +11,7 @@ const DeleteConfirmModal = ({ refetch, id }) => {
   };
   return (
     <div>
-      <textarea
+      <input
         type="checkbox"
         id="delete-confirm-modal"
         className="modal-toggle"

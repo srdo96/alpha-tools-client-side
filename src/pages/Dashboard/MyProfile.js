@@ -38,7 +38,7 @@ const MyProfile = () => {
       refetch();
     });
   };
-
+  
   return (
     <div className="bg-white shadow overflow-hidden sm:rounded-lg h-screen">
       <div className="flex justify-between">
@@ -144,7 +144,7 @@ const MyProfile = () => {
               </dd>
             ) : (
               <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2 flex justify-between">
-                {location}
+                <p>{location}</p>
                 <span
                   onClick={() => setEditLocation(true)}
                   className="font-medium text-indigo-600 hover:text-indigo-500 mr-32 cursor-pointer ml-5"

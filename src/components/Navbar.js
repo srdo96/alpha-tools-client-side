@@ -9,7 +9,7 @@ const Navbar = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const [checkEmailVerified, setCheckEmailVerified] = useState(true);
   const { pathname } = useLocation();
-
+  // console.log(pathname.includes("dashboard"));
   // if (loading) return <p>loading</p>;
   // if (user) {
   //   console.log(user.emailVerified);
@@ -17,8 +17,8 @@ const Navbar = ({ children }) => {
   // }
 
   return (
-    <div class="drawer drawer-end">
-      <textarea id="my-drawer-3" type="checkbox" class="drawer-toggle " />
+    <div class="drawer drawer-end ">
+      <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
       <div class="drawer-content flex flex-col ">
         {/* <!-- Navbar --> */}
         <div class="w-full navbar bg-blue-400 z-20 fixed top-0">
@@ -46,7 +46,7 @@ const Navbar = ({ children }) => {
             </label>
           )}
           <div class="flex-1 px-2 mx-2">Alpha Tools</div>
-          <div class="flex-none lg:hidden">
+          <div class="flex-none block lg:hidden">
             <label for="my-drawer-3" class="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +73,7 @@ const Navbar = ({ children }) => {
               </li>
               {user && (
                 <li>
-                  <NavLink to="/dashboard/my-orders" className="rounded-lg">
+                  <NavLink to="/dashboard/profile" className="rounded-lg">
                     Dashboard
                   </NavLink>
                 </li>

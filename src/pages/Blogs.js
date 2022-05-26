@@ -3,6 +3,7 @@ import React from "react";
 const Blogs = () => {
   return (
     <div class="bg-lightblue py-20 px-4">
+      {/* <button onClick={}>TEST ADMIN</button> */}
       <div class="mx-auto max-w-6xl flex flex-col md:flex-row">
         <h2 class="mr-8 w-full md:w-1/3 text-3xl font-extrabold leading-9">
           My Awesome Blogs

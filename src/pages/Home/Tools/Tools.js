@@ -15,7 +15,7 @@ const Tools = () => {
     );
   }
   const { data: tools } = data;
-  console.log(data);
+  // console.log(data);
   return (
     <div className=" mt-16">
       <h4 className="upper text-center text-lg text-red-700 font-semibold my-4">

@@ -39,11 +39,7 @@ const Payment = () => {
             <p>Please pay ${data?.data?.totalPrice}</p>
           </div>
           <div className="flex  items-center">
-            <img
-              className="h-2/3 w-4/5"
-              src="https://i.ibb.co/jRnJyZ3/wrench.webp"
-              alt=""
-            />
+            <img className="h-2/3 w-4/5" src={data?.data?.img} alt="" />
           </div>
         </div>
         <div class="card flex-shrink-0 w-50 max-w-xl shadow-2xl bg-white">

@@ -16,6 +16,7 @@ const Signup = () => {
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -46,7 +47,7 @@ const Signup = () => {
               <label class="label">
                 <span class="label-text">Name</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Name"
@@ -70,7 +71,7 @@ const Signup = () => {
               <label class="label">
                 <span class="label-text">Email</span>
               </label>
-              <textarea
+              <input
                 type="text"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Email"
@@ -102,7 +103,7 @@ const Signup = () => {
               <label class="label">
                 <span class="label-text">Password</span>
               </label>
-              <textarea
+              <input
                 type="password"
                 className="input input-bordered w-full max-w-lg "
                 placeholder="Password"

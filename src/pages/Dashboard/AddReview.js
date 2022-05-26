@@ -19,6 +19,7 @@ const AddReview = () => {
       email: user?.email,
       rating: data.rating,
       desc: data.desc,
+      img: user.photoURL,
     };
 
     fetcher.patch("add-reviews", review).then((res) => {
