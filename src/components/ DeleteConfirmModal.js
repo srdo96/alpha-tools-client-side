@@ -5,7 +5,7 @@ import fetcher from "../api/axiosInstance";
 const DeleteConfirmModal = ({ refetch, id }) => {
   const handleDeleteOrder = (id) => {
     fetcher.delete(`/orders/${id}`).then((res) => {
-      toast.success("Removed your order successfully.");
+      toast.success("Removed order successfully.");
       refetch();
     });
   };

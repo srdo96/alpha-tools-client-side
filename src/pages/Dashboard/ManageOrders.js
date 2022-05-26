@@ -1,20 +1,22 @@
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import toast from "react-hot-toast";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import fetcher from "../../api/axiosInstance";
 import DeleteConfirmModal from "../../components/ DeleteConfirmModal";
 import Loading from "../../components/Loading/Loading";
+import UserDeleteConfirm from "../../components/UserDeleteConfirm";
 import auth from "../../firebase.init";
 
-const MyOrders = () => {
+const ManageOrders = () => {
   const [user, loading, error] = useAuthState(auth);
   const email = user.email;
-  const { data, isLoading, refetch } = useQuery("myOrders", () =>
-    fetcher.get(`/orders/${email}`)
+  const { data, isLoading, refetch } = useQuery("allOrders", () =>
+    fetcher.get("/orders")
   );
 
-  if (isLoading) {
+  if (isLoading || loading) {
     return (
       <div className="h-screen flex justify-center ">
         <Loading />;
@@ -22,20 +24,29 @@ const MyOrders = () => {
     );
   }
 
+  const handleMakeAdmin = (email) => {
+    fetcher.put(`/user/admin/${email}`).then((res) => {
+      toast.success("Make admin Successful");
+      console.log(res);
+      refetch();
+    });
+  };
   return (
-    <div class="ml-2">
-      <table class="table w-full max-h-screen">
+    <div class="overflow-x-auto">
+      <table class="table table-compact w-full">
         {/* <!-- head --> */}
         <thead>
           <tr>
             <th>#</th>
             <th>Name</th>
+            <th>Email</th>
+            <th>Product Name</th>
             <th>Unit Price</th>
             <th>Order Quantity</th>
             <th>Total Price</th>
             <th>Status</th>
-            <th></th>
             <th>Transaction Id</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -43,6 +54,8 @@ const MyOrders = () => {
             (
               {
                 _id,
+                userName,
+                userEmail,
                 toolsName,
                 price_unit,
                 order,
@@ -54,6 +67,8 @@ const MyOrders = () => {
             ) => (
               <tr>
                 <th>{index + 1}</th>
+                <td>{userName}</td>
+                <td>{userEmail}</td>
                 <td>{toolsName}</td>
                 <td>{price_unit}</td>
                 <td>{order}</td>
@@ -61,18 +76,14 @@ const MyOrders = () => {
 
                 {status.includes("unpaid") ? (
                   <td>
-                    <Link
-                      to={`/dashboard/payment/${_id}`}
-                      className="badge badge-warning hover:bg-amber-600"
-                    >
-                      pay now
-                    </Link>
+                    <div className="text-red-500 font-bold">NOT PAID</div>
                   </td>
                 ) : (
                   <td>
-                    <div class="badge badge-success">paid</div>
+                    <div class=" px-6 text-blue-600 font-bold">PAID</div>
                   </td>
                 )}
+                {transactionId ? <td>{transactionId}</td> : <td></td>}
                 {status.includes("unpaid") ? (
                   <td>
                     <label htmlFor="delete-confirm-modal">
@@ -97,7 +108,6 @@ const MyOrders = () => {
                 ) : (
                   <td />
                 )}
-                {transactionId ? <td>{transactionId}</td> : <td></td>}
               </tr>
             )
           )}
@@ -107,4 +117,4 @@ const MyOrders = () => {
   );
 };
 
-export default MyOrders;
+export default ManageOrders;

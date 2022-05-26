@@ -25,7 +25,7 @@ const Payment = () => {
   }
   console.log(data?.data?.userName);
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center min-h-screen items-center">
       <div>
         <div class="card  w-50 max-w-xl bg-white shadow-xl my-12 grid grid-cols-3 ">
           <div class="card-body col-span-2">

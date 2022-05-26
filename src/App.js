@@ -8,6 +8,7 @@ import AddProduct from "./pages/Dashboard/AddProduct";
 import AddReview from "./pages/Dashboard/AddReview";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import MakeAdmin from "./pages/Dashboard/MakeAdmin";
+import ManageOrders from "./pages/Dashboard/ManageOrders";
 import MyOrders from "./pages/Dashboard/MyOrders";
 import MyProfile from "./pages/Dashboard/MyProfile";
 import Payment from "./pages/Dashboard/Payment";
@@ -37,6 +38,14 @@ function App() {
           }
         ></Route>
 
+        <Route
+          path="payment/:id"
+          element={
+            <ProtectedRoute>
+              <Payment />
+            </ProtectedRoute>
+          }
+        />
         {/* Dashboard routes */}
         <Route
           path="dashboard"
@@ -49,7 +58,7 @@ function App() {
           <Route path="profile" element={<MyProfile />} />
           <Route path="my-orders" element={<MyOrders />} />
           <Route path="add-review" element={<AddReview />} />
-          <Route path="payment/:id" element={<Payment />} />
+
           <Route
             path="add-product"
             element={
@@ -63,6 +72,14 @@ function App() {
             element={
               <AdminRoute>
                 <MakeAdmin />
+              </AdminRoute>
+            }
+          />
+          <Route
+            path="manage-orders"
+            element={
+              <AdminRoute>
+                <ManageOrders />
               </AdminRoute>
             }
           />

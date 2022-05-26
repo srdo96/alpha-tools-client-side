@@ -54,7 +54,7 @@ const Purchase = () => {
       })
       .then((res) => {
         const id = res?.data?.insertedId;
-        navigate(`/dashboard/payment/${id}`);
+        navigate(`/payment/${id}`);
         console.log("Order place");
       });
   };
