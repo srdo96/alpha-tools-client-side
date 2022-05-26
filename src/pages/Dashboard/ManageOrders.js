@@ -23,12 +23,10 @@ const ManageOrders = () => {
       </div>
     );
   }
-
-  const handleMakeAdmin = (email) => {
-    fetcher.put(`/user/admin/${email}`).then((res) => {
-      toast.success("Make admin Successful");
-      console.log(res);
+  const handleUpdate = (id) => {
+    fetcher.put(`/order/${id}`).then((res) => {
       refetch();
+      toast.success("Order Shipped Successful");
     });
   };
   return (
@@ -74,23 +72,38 @@ const ManageOrders = () => {
                 <td>{order}</td>
                 <td>{totalPrice}</td>
 
-                {status.includes("unpaid") ? (
+                {/* check payment status */}
+                {status.includes("unpaid") && (
                   <td>
-                    <div className="text-red-500 font-bold">NOT PAID</div>
-                  </td>
-                ) : (
-                  <td>
-                    <div class=" px-6 text-blue-600 font-bold">PAID</div>
+                    <div className="px-6 text-red-500 font-bold uppercase">
+                      {status}
+                    </div>
                   </td>
                 )}
+
+                {status.includes("pending") && (
+                  <td>
+                    <div class=" px-6 text-blue-600 font-bold uppercase">
+                      {status}
+                    </div>
+                  </td>
+                )}
+                {status.includes("shipped") && (
+                  <td>
+                    <div class=" px-6 text-green-700 font-bold uppercase">
+                      {status}
+                    </div>
+                  </td>
+                )}
+
                 {transactionId ? <td>{transactionId}</td> : <td></td>}
-                {status.includes("unpaid") ? (
+                {status.includes("unpaid") && (
                   <td>
                     <label htmlFor="delete-confirm-modal">
                       <svg
                         htmlFor="delete-confirm-modal"
                         xmlns="http://www.w3.org/2000/svg"
-                        className="h-6 w-6 hover:text-red-500"
+                        className="h-6 w-6 hover:text-red-500 cursor-pointer"
                         fill="none"
                         viewBox="0 0 24 24"
                         stroke="currentColor"
@@ -105,9 +118,27 @@ const ManageOrders = () => {
                     </label>
                     <DeleteConfirmModal refetch={refetch} id={_id} />
                   </td>
-                ) : (
-                  <td />
                 )}
+                {status.includes("pending") && (
+                  <td>
+                    <svg
+                      onClick={() => handleUpdate(_id)}
+                      xmlns="http://www.w3.org/2000/svg"
+                      className="h-6 w-6 hover:text-green-500 cursor-pointer"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+                      />
+                    </svg>
+                  </td>
+                )}
+                {status.includes("shipped") && <td />}
               </tr>
             )
           )}
