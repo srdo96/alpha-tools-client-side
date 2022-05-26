@@ -32,8 +32,8 @@ const MakeAdmin = () => {
   };
 
   return (
-    <div class="ml-2">
-      <table class="table w-full max-h-screen">
+    <div className="ml-2">
+      <table className="table w-full max-h-screen">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -59,7 +59,7 @@ const MakeAdmin = () => {
                 <td>
                   <button
                     onClick={() => handleMakeAdmin(email)}
-                    class=" badge badge-success"
+                    className=" badge badge-success"
                   >
                     Make Admin
                   </button>

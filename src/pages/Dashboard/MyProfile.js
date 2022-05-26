@@ -79,7 +79,7 @@ const MyProfile = () => {
                 <input
                   type="text"
                   onChange={(e) => setUpdata(e.target.value)}
-                  class="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-gray-50 text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
+                  className="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-gray-50 text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
                   placeholder="Your Education"
                 />
                 <span
@@ -122,7 +122,7 @@ const MyProfile = () => {
                 <input
                   onChange={(e) => setUpdata(e.target.value)}
                   type="text"
-                  class="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
+                  className="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
                   placeholder="Your Location"
                 />
                 <span
@@ -164,7 +164,7 @@ const MyProfile = () => {
                 <input
                   onChange={(e) => setUpdata(e.target.value)}
                   type="text"
-                  class="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-gray-50 text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
+                  className="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-gray-50 text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
                   placeholder="Your Phone Number"
                 />
                 <span
@@ -208,7 +208,7 @@ const MyProfile = () => {
                 <input
                   onChange={(e) => setUpdata(e.target.value)}
                   type="text"
-                  class="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
+                  className="   border border-t-0 border-x-0 border-gray-300 w-full pt-px px-4  bg-white text-gray-700 placeholder-gray-400  text-base focus:outline-none  "
                   placeholder="Your LinkedIn profile"
                 />
                 <span

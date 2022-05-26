@@ -30,8 +30,8 @@ const ManageOrders = () => {
     });
   };
   return (
-    <div class="overflow-x-auto">
-      <table class="table table-compact w-full">
+    <div className="overflow-x-auto">
+      <table className="table table-compact w-full">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -83,14 +83,14 @@ const ManageOrders = () => {
 
                 {status.includes("pending") && (
                   <td>
-                    <div class=" px-6 text-blue-600 font-bold uppercase">
+                    <div className=" px-6 text-blue-600 font-bold uppercase">
                       {status}
                     </div>
                   </td>
                 )}
                 {status.includes("shipped") && (
                   <td>
-                    <div class=" px-6 text-green-700 font-bold uppercase">
+                    <div className=" px-6 text-green-700 font-bold uppercase">
                       {status}
                     </div>
                   </td>

@@ -32,11 +32,10 @@ const Signup = () => {
     // console.log(email, password);
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
-    console.log("ol");
 
     // console.log(data);
   };
-  console.log(emailError);
+
   if (loading || googleLoading || emailLoading) {
     return (
       <div className="h-screen flex justify-center ">
@@ -57,21 +56,21 @@ const Signup = () => {
   }
   return (
     <div className="mt-16">
-      <div class="hero min-h-screen bg-base-200">
-        <div class="card w-full max-w-lg shadow-2xl bg-base-100">
-          <div class="card-body">
+      <div className="hero min-h-screen bg-base-200">
+        <div className="card w-full max-w-lg shadow-2xl bg-base-100">
+          <div className="card-body">
             <h1 className="text-center text-2xl">Sign Up</h1>
             <button
               onClick={() => signInWithGoogle()}
-              class="btn btn-success mt-2"
+              className="btn btn-success mt-2"
             >
               {googleLoading ? <Loading /> : "Signup with Google"}
             </button>
-            <div class="divider">OR</div>
+            <div className="divider">OR</div>
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Name */}
-              <label class="label">
-                <span class="label-text">Name</span>
+              <label className="label">
+                <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
@@ -85,17 +84,17 @@ const Signup = () => {
                 })}
               />
               {/* Name error handling */}
-              <label class="label">
+              <label className="label">
                 {errors.name?.type === "required" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.name.message}
                   </span>
                 )}
               </label>
 
               {/* Email */}
-              <label class="label">
-                <span class="label-text">Email</span>
+              <label className="label">
+                <span className="label-text">Email</span>
               </label>
               <input
                 type="text"
@@ -113,21 +112,21 @@ const Signup = () => {
                 })}
               />
               {/* Email error handling */}
-              <label class="label">
+              <label className="label">
                 {errors.email?.type === "required" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.email.message}
                   </span>
                 )}
                 {errors.email?.type === "pattern" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.email.message}
                   </span>
                 )}
               </label>
               {/* Password */}
-              <label class="label">
-                <span class="label-text">Password</span>
+              <label className="label">
+                <span className="label-text">Password</span>
               </label>
               <input
                 type="password"
@@ -145,14 +144,14 @@ const Signup = () => {
                 })}
               />
               {/* Password error handling */}
-              <label class="label">
+              <label className="label">
                 {errors.password?.type === "required" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.password.message}
                   </span>
                 )}
                 {errors.password?.type === "minLength" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.password.message}
                   </span>
                 )}
@@ -170,10 +169,10 @@ const Signup = () => {
                 {updating && <Loading />}
               </button>
             </form>
-            <div class="pt-5 pb-12 text-center">
+            <div className="pt-5 pb-12 text-center">
               <p>
                 Already have an account?
-                <Link to="/login" class="font-semibold underline ml-1">
+                <Link to="/login" className="font-semibold underline ml-1">
                   Login.
                 </Link>
               </p>

@@ -24,8 +24,8 @@ const ManageProducts = () => {
   }
 
   return (
-    <div class="ml-2">
-      <table class="table w-full max-h-screen">
+    <div className="ml-2">
+      <table className="table w-full max-h-screen">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -47,7 +47,7 @@ const ManageProducts = () => {
                   <img
                     alt="profil"
                     src={img}
-                    class="mx-auto object-cover rounded-full h-10 w-10 "
+                    className="mx-auto object-cover rounded-full h-10 w-10 "
                   />
                 </td>
                 <td>{name}</td>

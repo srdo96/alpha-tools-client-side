@@ -110,15 +110,15 @@ const Purchase = () => {
           </dl>
         </div>
       </div>
-      <div class="hero bg-white">
-        <div class="card w-full max-w-lg shadow-2xl bg-gray-50">
-          <div class="card-body">
+      <div className="hero bg-white">
+        <div className="card w-full max-w-lg shadow-2xl bg-gray-50">
+          <div className="card-body">
             <h1 className="text-center text-2xl">Purchase From</h1>
 
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Order Quantity */}
-              <label class="label">
-                <span class="label-text">Order Quantity</span>
+              <label className="label">
+                <span className="label-text">Order Quantity</span>
               </label>
               <input
                 type="number"
@@ -140,26 +140,26 @@ const Purchase = () => {
                 })}
               />
               {/* Order error handling */}
-              <label class="label">
+              <label className="label">
                 {errors.order?.type === "required" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.order.message}
                   </span>
                 )}
                 {errors.order?.type === "min" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.order.message}
                   </span>
                 )}
                 {errors.order?.type === "max" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.order.message}
                   </span>
                 )}
               </label>
               {/* User Name */}
-              <label class="label">
-                <span class="label-text">Name</span>
+              <label className="label">
+                <span className="label-text">Name</span>
               </label>
               <input
                 type="text"
@@ -170,8 +170,8 @@ const Purchase = () => {
                 {...register("nam")}
               />
               {/* Email */}
-              <label class="label">
-                <span class="label-text">Email</span>
+              <label className="label">
+                <span className="label-text">Email</span>
               </label>
               <input
                 type="text"
@@ -182,8 +182,8 @@ const Purchase = () => {
                 {...register("userEmail")}
               />
               {/* Phone */}
-              <label class="label">
-                <span class="label-text">Phone No.</span>
+              <label className="label">
+                <span className="label-text">Phone No.</span>
               </label>
               <input
                 type="text"
@@ -197,16 +197,16 @@ const Purchase = () => {
                 })}
               />
               {/* Phone No. error handling */}
-              <label class="label">
+              <label className="label">
                 {errors.phone?.type === "required" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.phone?.message}
                   </span>
                 )}
               </label>
               {/* Address */}
-              <label class="label">
-                <span class="label-text">Address</span>
+              <label className="label">
+                <span className="label-text">Address</span>
               </label>
               <input
                 type="text"
@@ -220,9 +220,9 @@ const Purchase = () => {
                 })}
               />{" "}
               {/* Address error handling */}
-              <label class="label">
+              <label className="label">
                 {errors.address?.type === "required" && (
-                  <span class="label-text-alt text-red-600">
+                  <span className="label-text-alt text-red-600">
                     {errors.address?.message}
                   </span>
                 )}

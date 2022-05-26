@@ -33,12 +33,12 @@ const AddProduct = () => {
 
   return (
     <div className=" mx-auto w-96 mb-16 ">
-      <div class="card-body  bg-white rounded-lg shadow-lg">
+      <div className="card-body  bg-white rounded-lg shadow-lg">
         <h1 className="text-center text-2xl">Add New Product</h1>
         <form className="mx-auto w-full" onSubmit={handleSubmit(onSubmit)}>
           {/* Name */}
-          <label class="label">
-            <span class="label-text">Name</span>
+          <label className="label">
+            <span className="label-text">Name</span>
           </label>
           <input
             type="text"
@@ -52,17 +52,17 @@ const AddProduct = () => {
             })}
           />
           {/* Name error handling */}
-          <label class="label">
+          <label className="label">
             {errors.name?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.name.message}
               </span>
             )}
           </label>
 
           {/* Description */}
-          <label class="label">
-            <span class="label-text">Description</span>
+          <label className="label">
+            <span className="label-text">Description</span>
           </label>
           <textarea
             type="text"
@@ -77,16 +77,16 @@ const AddProduct = () => {
           />
 
           {/* Description error handling */}
-          <label class="label">
+          <label className="label">
             {errors.desc?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.desc.message}
               </span>
             )}
           </label>
           {/* Minimum Order */}
-          <label class="label">
-            <span class="label-text">Minimum Order</span>
+          <label className="label">
+            <span className="label-text">Minimum Order</span>
           </label>
           <input
             type="number"
@@ -104,21 +104,21 @@ const AddProduct = () => {
             })}
           />
           {/* Minimum order error handling */}
-          <label class="label">
+          <label className="label">
             {errors.minimum?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.minimum.message}
               </span>
             )}
             {errors.minimum?.type === "min" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.minimum.message}
               </span>
             )}
           </label>
           {/* Available Product */}
-          <label class="label">
-            <span class="label-text">Available Product</span>
+          <label className="label">
+            <span className="label-text">Available Product</span>
           </label>
           <input
             type="number"
@@ -136,22 +136,22 @@ const AddProduct = () => {
             })}
           />
           {/* Available error handling */}
-          <label class="label">
+          <label className="label">
             {errors.available?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.available.message}
               </span>
             )}
             {errors.available?.type === "min" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.available.message}
               </span>
             )}
           </label>
 
           {/* Price per Unit */}
-          <label class="label">
-            <span class="label-text">Price per unit</span>
+          <label className="label">
+            <span className="label-text">Price per unit</span>
           </label>
           <input
             type="number"
@@ -169,22 +169,22 @@ const AddProduct = () => {
             })}
           />
           {/* Per unit price error handling */}
-          <label class="label">
+          <label className="label">
             {errors.price_unit?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.price_unit.message}
               </span>
             )}
             {errors.price_unit?.type === "min" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.price_unit.message}
               </span>
             )}
           </label>
 
           {/* Image  */}
-          <label class="label">
-            <span class="label-text">Image</span>
+          <label className="label">
+            <span className="label-text">Image</span>
           </label>
           <input
             type="url"
@@ -198,9 +198,9 @@ const AddProduct = () => {
             })}
           />
           {/* Image error handling */}
-          <label class="label">
+          <label className="label">
             {errors.img?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.img.message}
               </span>
             )}

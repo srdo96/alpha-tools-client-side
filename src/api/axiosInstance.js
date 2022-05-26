@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const fetcher = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://safe-retreat-20126.herokuapp.com/",
 });
 
 export default fetcher;

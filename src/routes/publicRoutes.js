@@ -4,6 +4,7 @@ import Home from "../pages/Home/Home";
 import Login from "../pages/Login";
 import MyPortfolio from "../pages/MyPortfolio";
 import NotFound from "../pages/NotFound";
+import ResetPass from "../pages/ResetPass";
 import Signup from "../pages/Signup";
 
 export const publicRoutes = [
@@ -13,5 +14,6 @@ export const publicRoutes = [
   { path: "/portfolio", name: "MyPortfolio", Component: MyPortfolio },
   { path: "/login", name: "Login", Component: Login },
   { path: "/signup", name: "Signup", Component: Signup },
+  { path: "/reset", name: "Signup", Component: ResetPass },
   { path: "*", name: "NotFound", Component: NotFound },
 ];

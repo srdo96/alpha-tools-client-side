@@ -41,8 +41,8 @@ const Reviews = () => {
         modules={[Autoplay, Pagination, Navigation]}
         className="swiper"
       >
-        {data?.data?.map((review) => (
-          <SwiperSlide>
+        {data?.data?.map((review, index) => (
+          <SwiperSlide key={index}>
             <Review key={review._id} review={review} />
           </SwiperSlide>
         ))}

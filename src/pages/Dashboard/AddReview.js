@@ -10,6 +10,7 @@ const AddReview = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -22,18 +23,19 @@ const AddReview = () => {
     };
 
     fetcher.patch("add-reviews", review).then((res) => {
+      reset();
       toast.success("Thanks for review!");
     });
   };
 
   return (
     <div className=" mx-auto w-96 ">
-      <div class="card-body  bg-white rounded-lg shadow-lg">
+      <div className="card-body  bg-white rounded-lg shadow-lg">
         <h1 className="text-center text-2xl">Add Your Review</h1>
         <form className="mx-auto w-full" onSubmit={handleSubmit(onSubmit)}>
           {/* Rating */}
-          <label class="label">
-            <span class="label-text">Rating</span>
+          <label className="label">
+            <span className="label-text">Rating</span>
           </label>
           <input
             type="number"
@@ -55,26 +57,26 @@ const AddReview = () => {
             })}
           />
           {/* Rating error handling */}
-          <label class="label">
+          <label className="label">
             {errors.rating?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.rating.message}
               </span>
             )}
             {errors.rating?.type === "max" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.rating.message}
               </span>
             )}
             {errors.rating?.type === "min" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.rating.message}
               </span>
             )}
           </label>
           {/* Description */}
-          <label class="label">
-            <span class="label-text">Description</span>
+          <label className="label">
+            <span className="label-text">Description</span>
           </label>
           <textarea
             type="text"
@@ -88,9 +90,9 @@ const AddReview = () => {
             })}
           />
           {/* Description error handling */}
-          <label class="label">
+          <label className="label">
             {errors.desc?.type === "required" && (
-              <span class="label-text-alt text-red-600">
+              <span className="label-text-alt text-red-600">
                 {errors.desc.message}
               </span>
             )}

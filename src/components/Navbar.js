@@ -18,54 +18,54 @@ const Navbar = ({ children }) => {
   // }
 
   return (
-    <div class="drawer drawer-end ">
-      <input id="my-drawer-3" type="checkbox" class="drawer-toggle" />
-      <div class="drawer-content flex flex-col ">
+    <div className="drawer drawer-end ">
+      <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
+      <div className="drawer-content flex flex-col ">
         {/* <!-- Navbar --> */}
-        <div class="w-full navbar bg-blue-400 z-20 fixed top-0">
+        <div className="w-full navbar bg-blue-400 z-20 fixed top-0">
           {/* dashboard  nav icon */}
           {pathname.includes("dashboard") && (
             <label
-              for="my-drawer-2"
+              htmlFor="my-drawer-2"
               tabindex="0"
-              class="btn btn-ghost btn-circle lg:hidden"
+              className="btn btn-ghost btn-circle lg:hidden"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
+                className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h7"
                 />
               </svg>
             </label>
           )}
-          <div class="flex-1 px-2 mx-2">Alpha Tools</div>
-          <div class="flex-none block lg:hidden">
-            <label for="my-drawer-3" class="btn btn-square btn-ghost">
+          <div className="flex-1 px-2 mx-2">Alpha Tools</div>
+          <div className="flex-none block lg:hidden">
+            <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                class="inline-block w-6 h-6 stroke-current"
+                className="inline-block w-6 h-6 stroke-current"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
                   d="M4 6h16M4 12h16M4 18h16"
                 ></path>
               </svg>
             </label>
           </div>
-          <div class="flex-none hidden lg:block">
-            <ul class="menu menu-horizontal gap-3 uppercase font-semibold text-gray-300">
+          <div className="flex-none hidden lg:block">
+            <ul className="menu menu-horizontal gap-3 uppercase font-semibold text-gray-300">
               {/* <!-- Navbar menu content here --> */}
               <li>
                 <NavLink to="/" className="rounded-lg">
@@ -98,7 +98,7 @@ const Navbar = ({ children }) => {
                 {user ? (
                   <button
                     onClick={() => signOut(auth)}
-                    class="btn btn-warning rounded-lg text-black"
+                    className="btn btn-warning rounded-lg text-black"
                   >
                     Log Out
                   </button>
@@ -116,9 +116,9 @@ const Navbar = ({ children }) => {
         {children}
         {pathname.includes("dashboard") || <Footer />}
       </div>
-      <div class="drawer-side">
-        <label for="my-drawer-3" class="drawer-overlay"></label>
-        <ul class="menu p-4 overflow-y-auto w-80 bg-base-100">
+      <div className="drawer-side">
+        <label htmlFor="my-drawer-3" className="drawer-overlay"></label>
+        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100">
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink to="/" className="rounded-lg">
@@ -154,7 +154,7 @@ const Navbar = ({ children }) => {
                   signOut(auth);
                   navigate("/");
                 }}
-                class="btn btn-warning rounded-lg text-black"
+                className="btn btn-warning rounded-lg text-black"
               >
                 Log Out
               </button>

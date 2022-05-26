@@ -23,8 +23,8 @@ const MyOrders = () => {
   }
 
   return (
-    <div class="ml-2">
-      <table class="table w-full max-h-screen">
+    <div className="ml-2">
+      <table className="table w-full max-h-screen">
         {/* <!-- head --> */}
         <thead>
           <tr>
@@ -70,7 +70,7 @@ const MyOrders = () => {
                   </td>
                 ) : (
                   <td>
-                    <div class="badge badge-success">paid</div>
+                    <div className="badge badge-success">paid</div>
                   </td>
                 )}
                 {status.includes("unpaid") ? (

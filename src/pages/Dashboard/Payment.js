@@ -27,12 +27,12 @@ const Payment = () => {
   return (
     <div className="flex justify-center min-h-screen items-center">
       <div>
-        <div class="card  w-50 max-w-xl bg-white shadow-xl my-12 grid grid-cols-3 ">
-          <div class="card-body col-span-2">
+        <div className="card  w-50 max-w-xl bg-white shadow-xl my-12 grid grid-cols-3 ">
+          <div className="card-body col-span-2">
             <p className="text-success font-bold">
               Hello, {data?.data?.userName}
             </p>
-            <h2 class="card-title">Pay for {data?.data?.toolsName}</h2>
+            <h2 className="card-title">Pay for {data?.data?.toolsName}</h2>
             <p>Order Quantity: {data?.data?.order}</p>
             <p>Unit price: ${data?.data?.price_unit}</p>
             <hr />
@@ -42,8 +42,8 @@ const Payment = () => {
             <img className="h-2/3 w-4/5" src={data?.data?.img} alt="" />
           </div>
         </div>
-        <div class="card flex-shrink-0 w-50 max-w-xl shadow-2xl bg-white">
-          <div class="card-body">
+        <div className="card flex-shrink-0 w-50 max-w-xl shadow-2xl bg-white">
+          <div className="card-body">
             <Elements stripe={stripePromise}>
               <CheckoutForm data={data.data} />
             </Elements>
