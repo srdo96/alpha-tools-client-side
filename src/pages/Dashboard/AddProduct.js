@@ -10,6 +10,7 @@ const AddProduct = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -26,6 +27,7 @@ const AddProduct = () => {
 
     fetcher.patch("tools", product).then((res) => {
       toast.success("New product added!");
+      reset();
     });
   };
 

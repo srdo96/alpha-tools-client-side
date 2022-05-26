@@ -1,13 +1,14 @@
 import { signOut } from "firebase/auth";
 import React, { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import auth from "../firebase.init";
 import Footer from "./Footer";
 
 const Navbar = ({ children }) => {
   const [user, loading] = useAuthState(auth);
   const [checkEmailVerified, setCheckEmailVerified] = useState(true);
+  const navigate = useNavigate();
   const { pathname } = useLocation();
   // console.log(pathname.includes("dashboard"));
   // if (loading) return <p>loading</p>;
@@ -149,7 +150,10 @@ const Navbar = ({ children }) => {
           <li>
             {user ? (
               <button
-                onClick={() => signOut(auth)}
+                onClick={() => {
+                  signOut(auth);
+                  navigate("/");
+                }}
                 class="btn btn-warning rounded-lg text-black"
               >
                 Log Out

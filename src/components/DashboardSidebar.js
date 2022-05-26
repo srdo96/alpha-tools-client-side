@@ -55,6 +55,11 @@ const DashboardSidebar = ({ children }) => {
               <li>
                 <NavLink to="/dashboard/manage-orders">Manage Orders</NavLink>
               </li>
+              <li>
+                <NavLink to="/dashboard/manage-products">
+                  Manage Products
+                </NavLink>
+              </li>
             </>
           )}
         </ul>
