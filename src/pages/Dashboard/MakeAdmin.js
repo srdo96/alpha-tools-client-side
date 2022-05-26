@@ -40,16 +40,18 @@ const MakeAdmin = () => {
             <th>#</th>
             <th>Name</th>
             <th>Email</th>
+            <th>Phone No.</th>
             <th>Status</th>
             <th></th>
           </tr>
         </thead>
         <tbody>
-          {data?.data?.map(({ _id, name, email, role }, index) => (
+          {data?.data?.map(({ _id, name, email, role, phone }, index) => (
             <tr>
               <th>{index + 1}</th>
               <td>{name}</td>
               <td>{email}</td>
+              <td>{phone}</td>
 
               {role === "admin" ? (
                 <td>admin</td>

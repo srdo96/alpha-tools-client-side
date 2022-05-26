@@ -8,6 +8,7 @@ import {
 } from "react-firebase-hooks/auth";
 import auth from "../firebase.init";
 import Loading from "../components/Loading/Loading";
+import fetcher from "../api/axiosInstance";
 
 const Login = () => {
   const [user, loading] = useAuthState(auth);
@@ -33,7 +34,7 @@ const Login = () => {
     // console.log(data);
   };
 
-  if (loading) {
+  if (loading || googleLoading || emailLoading) {
     return (
       <div className="h-screen flex justify-center ">
         <Loading />;
@@ -42,6 +43,12 @@ const Login = () => {
   }
 
   if (user || googleUser || emailUser) {
+    const newUser = {
+      email: user?.email,
+      name: user?.displayName,
+      phone: user?.phoneNumber,
+    };
+    fetcher.put(`/user/${user.email}`, newUser);
     navigate(from, { replace: true });
   }
   return (

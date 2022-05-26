@@ -2,19 +2,24 @@ import React from "react";
 import {
   useAuthState,
   useCreateUserWithEmailAndPassword,
+  useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
 import { Link, Navigate, useNavigate } from "react-router-dom";
+import fetcher from "../api/axiosInstance";
 import Loading from "../components/Loading/Loading";
 import auth from "../firebase.init";
 
 const Signup = () => {
-  const [user] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);
+
   const [createUserWithEmailAndPassword, emailUser, emailLoading, emailError] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
+  const [signInWithGoogle, googleUser, googleLoading, googleError] =
+    useSignInWithGoogle(auth);
   const navigate = useNavigate();
 
   const {
@@ -24,23 +29,44 @@ const Signup = () => {
   } = useForm();
 
   const onSubmit = async ({ name, email, password }) => {
-    console.log(email, password);
+    // console.log(email, password);
     await createUserWithEmailAndPassword(email, password);
     await updateProfile({ displayName: name });
+    console.log("ol");
 
     // console.log(data);
   };
-  console.log(user);
-  if (user || emailUser) {
+  console.log(emailError);
+  if (loading || googleLoading || emailLoading) {
+    return (
+      <div className="h-screen flex justify-center ">
+        <Loading />;
+      </div>
+    );
+  }
+
+  // console.log("user", user, emailUser);
+  if (user || googleUser || emailUser) {
+    // const newUser = {
+    //   email: user?.email,
+    //   name: user?.displayName,
+    //   phone: user?.phoneNumber,
+    // };
+    // fetcher.put(`/user/${user?.email}`, newUser);
     navigate("/");
   }
   return (
-    <div>
+    <div className="mt-16">
       <div class="hero min-h-screen bg-base-200">
         <div class="card w-full max-w-lg shadow-2xl bg-base-100">
           <div class="card-body">
             <h1 className="text-center text-2xl">Sign Up</h1>
-            <button class="btn btn-success mt-2">Signup with Google</button>
+            <button
+              onClick={() => signInWithGoogle()}
+              class="btn btn-success mt-2"
+            >
+              {googleLoading ? <Loading /> : "Signup with Google"}
+            </button>
             <div class="divider">OR</div>
             <form onSubmit={handleSubmit(onSubmit)}>
               {/* Name */}
@@ -132,10 +158,12 @@ const Signup = () => {
                 )}
               </label>
               {updateError && (
-                <p className="text-red-500 text-center">{updateError}</p>
+                <p className="text-red-500 text-center">
+                  {updateError.message}
+                </p>
               )}
               {emailError && (
-                <p className="text-red-500 text-center">{emailError}</p>
+                <p className="text-red-500 text-center">{emailError.message}</p>
               )}
               <button type="submit" className="btn btn-primary btn-block mt-5">
                 {emailLoading ? <Loading /> : "Sign up"}
