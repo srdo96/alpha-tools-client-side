@@ -18,7 +18,7 @@ const Navbar = ({ children }) => {
   // }
 
   return (
-    <div className="drawer drawer-end ">
+    <div className="drawer drawer-end">
       <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
       <div className="drawer-content flex flex-col ">
         {/* <!-- Navbar --> */}
@@ -46,7 +46,7 @@ const Navbar = ({ children }) => {
               </svg>
             </label>
           )}
-          <div className="flex-1 px-2 mx-2">Alpha Tools</div>
+          <div className="flex-1 px-2 mx-2 font-bold">Alpha Tools</div>
           <div className="flex-none block lg:hidden">
             <label htmlFor="my-drawer-3" className="btn btn-square btn-ghost">
               <svg
