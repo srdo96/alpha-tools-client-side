@@ -26,7 +26,7 @@ const DashboardSidebar = ({ children }) => {
       </div>
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay "></label>
-        <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content ">
+        <ul className="menu p-4 overflow-y-auto w-80 base-100 lg:bg-transparent text-base-content ">
           {/* <!-- Sidebar content here --> */}
           <li>
             <NavLink to="/dashboard/profile">My Profile</NavLink>
