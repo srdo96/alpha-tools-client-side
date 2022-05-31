@@ -62,7 +62,7 @@ const MyOrders = () => {
                 {status.includes("unpaid") ? (
                   <td>
                     <Link
-                      to={`/dashboard/payment/${_id}`}
+                      to={`/payment/${_id}`}
                       className="badge badge-warning hover:bg-amber-600"
                     >
                       pay now
@@ -70,7 +70,7 @@ const MyOrders = () => {
                   </td>
                 ) : (
                   <td>
-                    <div className="badge badge-success">paid</div>
+                    <div className="badge badge-success">{status}</div>
                   </td>
                 )}
                 {status.includes("unpaid") ? (
