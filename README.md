@@ -4,9 +4,10 @@
 
 ## Features and Functionality
 
-- Hear you can parchese tools with card.
-- You can manage users orders.
-- Here you can see my portfolio.
-- Add Dashboard wher user can add review and also can see their orders
-- use MongoDB. Store all data and do CRUD operation in MongoDB NoSql database.
-- Social login. Alongside email/password login.
+- Implemented user interface using React and Tailwind CSS.
+- Built login system for authorization and authentication.
+- Implemented Stripe payment gateway to purchase products.
+- Implemented Add Product section for admin to add new product.
+- In Manage Orders section built a system so that admin update pending orders to shipped.
+- Implemented My Profile section both user and admin to update their profile.
+- Add Dashboard where user can add review and also can see their orders.
