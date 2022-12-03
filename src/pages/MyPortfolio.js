@@ -98,7 +98,7 @@ const MyPortfolio = () => {
               </li>
               <li className="border-b w-80">
                 <span className="font-semibold mr-2">Educational:</span> BSc in
-                CSE (runing)
+                CSE
               </li>
             </ul>
           </div>
